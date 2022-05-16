@@ -62,7 +62,7 @@ class ResNetBackbone(Backbone):
     def validate(self):
         """ Checks whether the backbone string is correct.
         """
-        allowed_backbones = ['resnet50', 'resnet101', 'resnet152']
+        allowed_backbones = ['resnet18','resnet50', 'resnet101', 'resnet152']
         backbone = self.backbone.split('_')[0]
 
         if backbone not in allowed_backbones:
@@ -94,6 +94,8 @@ def resnet_retinanet(num_classes, backbone='resnet50', inputs=None, modifier=Non
             inputs = keras.layers.Input(shape=(None, None, 3))
 
     # create the resnet backbone
+    if backbone == 'resnet18':
+        resnet = keras_resnet.models.ResNet18(inputs, include_top=False, freeze_bn=True)
     if backbone == 'resnet50':
         resnet = keras_resnet.models.ResNet50(inputs, include_top=False, freeze_bn=True)
     elif backbone == 'resnet101':
@@ -118,6 +120,8 @@ def resnet_retinanet(num_classes, backbone='resnet50', inputs=None, modifier=Non
 
     return retinanet.retinanet(inputs=inputs, num_classes=num_classes, backbone_layers=backbone_layers, **kwargs)
 
+def resnet18_retinanet(num_classes, inputs=None, **kwargs):
+    return resnet_retinanet(num_classes=num_classes, backbone='resnet18', inputs=inputs, **kwargs)
 
 def resnet50_retinanet(num_classes, inputs=None, **kwargs):
     return resnet_retinanet(num_classes=num_classes, backbone='resnet50', inputs=inputs, **kwargs)
