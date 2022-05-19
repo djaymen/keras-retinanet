@@ -21,7 +21,9 @@ from . import retinanet
 from . import Backbone
 from ..utils.image import preprocess_image
 
-
+WEIGHTS_PATH_NO_TOP = ('https://github.com/fchollet/deep-learning-models/'
+                       'releases/download/v0.1/'
+                       'vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5')
 class VGGBackbone(Backbone):
     """ Describes backbone information and provides utility functions.
     """
@@ -36,7 +38,7 @@ class VGGBackbone(Backbone):
         Weights can be downloaded at https://github.com/fizyr/keras-models/releases .
         """
         if self.backbone == 'vgg16':
-            resource = keras.applications.vgg16.vgg16.WEIGHTS_PATH_NO_TOP
+            resource = WEIGHTS_PATH_NO_TOP
             checksum = '6d6bbae143d832006294945121d1f1fc'
         elif self.backbone == 'vgg19':
             resource = keras.applications.vgg19.vgg19.WEIGHTS_PATH_NO_TOP
