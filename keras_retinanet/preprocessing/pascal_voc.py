@@ -36,7 +36,8 @@ voc_classes = {
     'double_slash_sign_line_h'         : 5,
     'dotted_line_h'         : 6,
     'dotted_line_h_22':7,
-    'dotted_line_h_15':8
+    'dotted_line_h_15':8,
+    'dotted_line_v':9
 }
 
 
