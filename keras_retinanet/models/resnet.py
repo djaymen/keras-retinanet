@@ -21,6 +21,7 @@ import keras_resnet.models
 from . import retinanet
 from . import Backbone
 from ..utils.image import preprocess_image
+from classification_models import ResNet18
 
 
 class ResNetBackbone(Backbone):
@@ -45,6 +46,11 @@ class ResNetBackbone(Backbone):
 
         filename = resnet_filename.format(depth)
         resource = resnet_resource.format(depth)
+        if depth == 18:
+            resnet_resource='https://github.com/qubvel/classification_models/releases/download/0.0.1/resnet{}_imagenet_1000.h5'
+            filename = resnet_filename.format(depth)
+            resource = resnet_resource.format(depth)
+            checksum = '64da73012bb70e16c901316c201d9803'
         if depth == 50:
             checksum = '3e9f4e4f77bbe2c9bec13b53ee1c2319'
         elif depth == 101:
@@ -95,7 +101,7 @@ def resnet_retinanet(num_classes, backbone='resnet50', inputs=None, modifier=Non
 
     # create the resnet backbone
     if backbone == 'resnet18':
-        resnet = keras_resnet.models.ResNet18(inputs, include_top=False, freeze_bn=True)
+        resnet = ResNet18(inputs, include_top=False, freeze_bn=True)
     if backbone == 'resnet50':
         resnet = keras_resnet.models.ResNet50(inputs, include_top=False, freeze_bn=True)
     elif backbone == 'resnet101':
