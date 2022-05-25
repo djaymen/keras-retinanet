@@ -21,7 +21,7 @@ import keras_resnet.models
 from . import retinanet
 from . import Backbone
 from ..utils.image import preprocess_image
-from classification_models import ResNet18
+
 
 
 class ResNetBackbone(Backbone):
@@ -101,7 +101,7 @@ def resnet_retinanet(num_classes, backbone='resnet50', inputs=None, modifier=Non
 
     # create the resnet backbone
     if backbone == 'resnet18':
-        resnet = ResNet18(inputs, include_top=False, freeze_bn=True)
+        resnet = keras_resnet.models.ResNet18(inputs, include_top=False, freeze_bn=True)
     if backbone == 'resnet50':
         resnet = keras_resnet.models.ResNet50(inputs, include_top=False, freeze_bn=True)
     elif backbone == 'resnet101':
