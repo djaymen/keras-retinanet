@@ -26,7 +26,7 @@ from pathlib import Path
 # set tf backend to allow memory to grow, instead of claiming everything
 import tensorflow as tf
 
-model_path = '/content/RetinanetTutorial/RetinanetModels/PlumsInference.h5'
+model_path = '/content/Retinanet/RetinanetModels/PlumsInference.h5'
 image_dir = '/content/save/'
 csv_file='/content/detection.csv'
 confidence_cutoff = 0.5 #Detections below this confidence will be ignored
@@ -96,4 +96,4 @@ for i in tqdm(range(len(list_files))):
        #cv2.rectangle(draw, (b[0], b[1]), (b[2], b[3]), color, thickness, cv2.LINE_AA)
 
 df = pd.DataFrame(results)  
-df.to_csv(csv_file)  
+df.to_csv(csv_file,index=False)  
