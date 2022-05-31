@@ -59,7 +59,7 @@ except:
     print("Model is likely already an inference model")
 
 # load label to names mapping for visualization purposes
-labels_to_names = {0: 'plum', 1: 'green_plum'}
+
 list_files=[]
 results=[]
 for file in os.listdir(image_dir):list_files.append(file)
@@ -79,15 +79,15 @@ for i in tqdm(range(len(list_files))):
   image = preprocess_image(image)
   image, scale = resize_image(image)
 
-  if(int(lx[0])>2 and int(lx[0])<15 and int(lx[1])>1 and int(lx[1])<17 ):
 
-     boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))
+
+  boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))
     
-     # correct for image scale
-     boxes /= scale
+  # correct for image scale
+  boxes /= scale
 
-     # visualize detections
-     for box, score, label in zip(boxes[0], scores[0], labels[0]):
+  # visualize detections
+  for box, score, label in zip(boxes[0], scores[0], labels[0]):
        # scores are sorted so we can break
        if score < confidence_cutoff:
          break
