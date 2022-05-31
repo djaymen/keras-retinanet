@@ -37,7 +37,9 @@ voc_classes = {
     'dotted_line_h'         : 6,
     'dotted_line_h_22':7,
     'dotted_line_h_15':8,
-    'dotted_line_v':9
+    'dotted_line_v':9,
+    'arrow_l':10,
+    'arrow_r':11
 }
 
 
