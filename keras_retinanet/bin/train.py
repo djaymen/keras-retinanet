@@ -175,7 +175,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
             evaluation = Evaluate(validation_generator, tensorboard=tensorboard_callback, weighted_average=args.weighted_average)
         evaluation = RedirectModel(evaluation, prediction_model)
         callbacks.append(evaluation)
-    """
+    
     # save the model
     if args.snapshots:
         # ensure directory created first; otherwise h5py will error after epoch.
@@ -183,7 +183,8 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
         checkpoint = keras.callbacks.ModelCheckpoint(
             os.path.join(
                 args.snapshot_path,
-                '{backbone}_{dataset_type}_{{epoch:02d}}.h5'.format(backbone=args.backbone, dataset_type=args.dataset_type)
+                #'{backbone}_{dataset_type}_{{epoch:02d}}.h5'.format(backbone=args.backbone, dataset_type=args.dataset_type)
+                'resnet50_pascal.h5'
             ),
             verbose=1,
             # save_best_only=True,
@@ -192,7 +193,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
         )
         checkpoint = RedirectModel(checkpoint, model)
         callbacks.append(checkpoint)
-    """
+    
     callbacks.append(keras.callbacks.ReduceLROnPlateau(
         monitor    = 'loss',
         factor     = args.reduce_lr_factor,
@@ -203,7 +204,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
         cooldown   = 0,
         min_lr     = 0
     ))
-    """
+    
     if args.evaluation and validation_generator:
         callbacks.append(keras.callbacks.EarlyStopping(
             monitor    = 'mAP',
@@ -212,7 +213,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
             min_delta  = 0.01
         ))
 
-    """
+   
     if args.tensorboard_dir:
         callbacks.append(tensorboard_callback)
 
