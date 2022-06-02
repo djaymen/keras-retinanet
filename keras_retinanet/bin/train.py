@@ -184,7 +184,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
             os.path.join(
                 args.snapshot_path,
                 #'{backbone}_{dataset_type}_{{epoch:02d}}.h5'.format(backbone=args.backbone, dataset_type=args.dataset_type)
-                'resnet50_pascal.h5'
+                'resnet50_pascal_50epochs_1batch.h5'
             ),
             verbose=1,
             # save_best_only=True,
