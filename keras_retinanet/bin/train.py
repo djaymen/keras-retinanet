@@ -184,7 +184,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
             os.path.join(
                 args.snapshot_path,
                 #'{backbone}_{dataset_type}_{{epoch:02d}}.h5'.format(backbone=args.backbone, dataset_type=args.dataset_type)
-                'resnet50_pascal_50epochs_1batch.h5'
+                'resnet50_pascal_30epochs_1batch.h5'
             ),
             verbose=1,
             # save_best_only=True,
@@ -432,7 +432,7 @@ def parse_args(args):
     parser.add_argument('--multi-gpu',        help='Number of GPUs to use for parallel processing.', type=int, default=0)
     parser.add_argument('--multi-gpu-force',  help='Extra flag needed to enable (experimental) multi-gpu support.', action='store_true')
     parser.add_argument('--initial-epoch',    help='Epoch from which to begin the train, useful if resuming from snapshot.', type=int, default=0)
-    parser.add_argument('--epochs',           help='Number of epochs to train.', type=int, default=50)
+    parser.add_argument('--epochs',           help='Number of epochs to train.', type=int, default=30)
     parser.add_argument('--steps',            help='Number of steps per epoch.', type=int, default=10000)
     parser.add_argument('--lr',               help='Learning rate.', type=float, default=1e-5)
     parser.add_argument('--optimizer-clipnorm', help='Clipnorm parameter for  optimizer.', type=float, default=0.001)
