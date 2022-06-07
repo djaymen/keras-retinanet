@@ -34,12 +34,10 @@ voc_classes = {
     'arrow_u'        : 3,
     'double_slash_sign_line_v'      : 4,
     'double_slash_sign_line_h'         : 5,
-    'dotted_line_h'         : 6,
-    'dotted_line_h_22':7,
-    'dotted_line_h_15':8,
-    'dotted_line_v':9,
-    'arrow_l':10,
-    'arrow_r':11
+    'dotted_line_h_22':6,
+    'dotted_line_v':7,
+    'arrow_l':8,
+    'arrow_r':9
 }
 
 
