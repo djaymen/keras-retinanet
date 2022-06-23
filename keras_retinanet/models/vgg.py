@@ -41,7 +41,8 @@ class VGGBackbone(Backbone):
             resource = WEIGHTS_PATH_NO_TOP
             checksum = '6d6bbae143d832006294945121d1f1fc'
         elif self.backbone == 'vgg19':
-            resource = keras.applications.vgg19.vgg19.WEIGHTS_PATH_NO_TOP
+            resource = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5'
+
             checksum = '253f8cb515780f3b799900260a226db6'
         else:
             raise ValueError("Backbone '{}' not recognized.".format(self.backbone))
